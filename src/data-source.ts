@@ -7,6 +7,12 @@ export const AppDataSource = new DataSource({
   entities: [CovidCase]
 })
 
+export const TestAppDataSource = new DataSource({
+  type: "sqlite",
+  database: "test-database.sqlite",
+  entities: [CovidCase]
+})
+
 AppDataSource.initialize()
   .then(() => {
     console.log("Data Source has been initialized!")
