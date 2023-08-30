@@ -15,12 +15,8 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           }
         }
 
-      }, // will be created in schemas/posts.js
-    handler: (req: FastifyRequest, reply:FastifyReply) => {
-      const covidCase = new CovidCase()
-      covidCase.userId = (req.body as CovidCase).userId
-      AppDataSource.manager.save(covidCase)
-    }
+      },
+    handler: (req: FastifyRequest, reply:FastifyReply) => AppDataSource.manager.save(new CovidCase())
     }
   fastify.post('/covidCases', addPostOpts)
 }
