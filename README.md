@@ -9,6 +9,7 @@ In the project directory, you can run:
 
 To start the app in dev mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000/documentation](http://localhost:3000/documentation) to view Swagger UI.
 
 ### `npm start`
 

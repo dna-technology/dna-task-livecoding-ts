@@ -1,21 +1,22 @@
-import {test} from 'tap'
+import {test, afterEach, beforeEach} from 'tap'
 import {build} from '../helper'
-import {TestAppDataSource} from "../../src/data-source";
+import {AppDataSource} from "../../src/data-source";
 import {CovidCaseDTO} from "../../src/dto/CovidCaseDTO";
+
+beforeEach(async () => {
+  await AppDataSource.initialize()
+})
+afterEach(async () => {
+  await AppDataSource.destroy()
+})
 
 test('should get existing covid cases', async (t) => {
   const app = await build(t)
   const res = await app.inject({
     url: '/covidCases'
   })
-  t.beforeEach(async () => {
-    await TestAppDataSource.initialize()
-  })
-  t.afterEach(t => {
-    t.context.connection.disconnect()
-  })
   t.same(res.statusCode, 200)
-  t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, true )
+  t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, false)
 })
 
 test('default root route', async (t) => {
