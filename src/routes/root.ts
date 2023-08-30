@@ -16,11 +16,7 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
           }
         }
       },
-    handler: (req: FastifyRequest) =>
-      () => {
-        const covidCaseModel = new CovidCase((req.body as CovidCaseDTO).userId)
-        AppDataSource.manager.save(covidCaseModel)
-      }
+    handler: (req: FastifyRequest) => AppDataSource.manager.save(new CovidCase((req.body as CovidCaseDTO).userId))
     }
   fastify.post('/covidCases', addPostOpts)
 }

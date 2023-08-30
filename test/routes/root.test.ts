@@ -16,7 +16,7 @@ test('should get existing covid cases', async (t) => {
     url: '/covidCases'
   })
   t.same(res.statusCode, 200)
-  t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, false)
+  t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, true)
 })
 
 test('default root route', async (t) => {
