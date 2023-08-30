@@ -7,4 +7,9 @@ export class CovidCase extends BaseEntity {
 
   @Column()
   userId: string
+
+  constructor (userId: string) {
+    super()
+    this.userId = userId
+  }
 }
