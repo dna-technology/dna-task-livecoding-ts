@@ -12,17 +12,23 @@ afterEach(async () => {
 })
 
 test('should get existing covid cases', async (t) => {
+  // given
   const app = await build(t)
+  // when
   const res = await loadAllCovidCases(app);
+  // then
   t.same(res.statusCode, 200)
   t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, true)
 })
 
-test('default root route', async (t) => {
+test('should create new case', async (t) => {
+  // given
   const app = await build(t)
   const uuid = uuidv4()
   const requestBody = {userId: uuid} as CovidCaseDTO
+  // when
   const res = await addCovidCase(app, requestBody)
+  // then
   t.same(res.statusCode, 200)
   const resList = await loadAllCovidCases(app);
   t.same((JSON.parse(resList.payload) as CovidCaseDTO[]).filter(item => item.userId === uuid).length > 0,
