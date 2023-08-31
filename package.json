@@ -1,7 +1,7 @@
 {
   "name": "dna-task-livecoding-ts",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "description": "DNA task live coding - Typescript (Node + Fastify)",
   "main": "app.ts",
   "directories": {
     "test": "test"
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mmarczak-dna/dna-task-livecoding-ts.git"
+    "url": "git+https://github.com/dna-technology/dna-task-livecoding-ts.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mmarczak-dna/dna-task-livecoding-ts/issues"
+    "url": "https://github.com/dna-technology/dna-task-livecoding-ts/issues"
   },
-  "homepage": "https://github.com/mmarczak-dna/dna-task-livecoding-ts#readme",
+  "homepage": "https://github.com/dna-technology/dna-task-livecoding-ts#readme",
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",

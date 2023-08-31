@@ -37,14 +37,14 @@ test('should create new case', async (t) => {
 
 async function loadAllCovidCases(app: any) {
   return await app.inject({
-    url: '/covidCases'
+    url: '/cases'
   });
 }
 
 async function addCovidCase(app: any, requestBody: CovidCaseDTO) {
   return await app.inject({
     method: 'POST',
-    url: '/covidCases',
+    url: '/cases',
     body: requestBody
   });
 }

@@ -3,8 +3,8 @@ import {CovidCase} from "../entity/CovidCase";
 import {AppDataSource} from "../data-source";
 import {CovidCaseDTO} from "../dto/CovidCaseDTO";
 
-const root: FastifyPluginAsync = async (fastify): Promise<void> => {
-  fastify.get('/covidCases', async function () {
+const cases: FastifyPluginAsync = async (fastify): Promise<void> => {
+  fastify.get('/cases', async function () {
     return AppDataSource.manager.find(CovidCase)
   })
   const addPostOpts = {
@@ -18,7 +18,7 @@ const root: FastifyPluginAsync = async (fastify): Promise<void> => {
       },
     handler: (req: FastifyRequest) => AppDataSource.manager.save(new CovidCase((req.body as CovidCaseDTO).userId))
     }
-  fastify.post('/covidCases', addPostOpts)
+  fastify.post('/cases', addPostOpts)
 }
 
-export default root;
+export default cases;
