@@ -2,7 +2,7 @@
 1. Clone the repository
 1. `npm install`
 1. Check if application is starting (`npm run dev`).
-    1. Node >= 16.x.x
+    1. Latest Node 18
 1. Run tests (`npm run test`) to check if they are running.
 
 ## Scenario
