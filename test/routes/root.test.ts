@@ -1,30 +1,29 @@
-import {test} from 'tap'
-import {build} from '../helper'
-import {CovidCaseDTO} from "../../src/dto/CovidCaseDTO";
-import {v4 as uuidv4} from 'uuid';
+import { build } from '../helper'
+import { CovidCaseDTO } from "../../src/dto/CovidCaseDTO";
+import { v4 as uuidv4 } from 'uuid';
 
-test('should get existing covid cases', async (t) => {
+const app = build()
+test('should get existing covid cases', async () => {
   // given
-  const app = await build(t)
   // when
   const res = await loadAllCovidCases(app);
   // then
-  t.same(res.statusCode, 200)
-  t.same((JSON.parse(res.payload) as CovidCaseDTO[]).length > 0, true)
+  expect(res.statusCode).toEqual(200);
+  const resLength = (JSON.parse(res.payload) as CovidCaseDTO[]).length;
+  expect(resLength).toBeGreaterThan(0);
 })
 
-test('should create new case', async (t) => {
+test('should create new case', async () => {
   // given
-  const app = await build(t)
   const uuid = uuidv4()
-  const requestBody = {userId: uuid} as CovidCaseDTO
+  const requestBody = { userId: uuid } as CovidCaseDTO
   // when
   const res = await addCovidCase(app, requestBody)
   // then
-  t.same(res.statusCode, 200)
+  expect(res.statusCode).toEqual(200);
   const resList = await loadAllCovidCases(app);
-  t.same((JSON.parse(resList.payload) as CovidCaseDTO[]).filter(item => item.userId === uuid).length > 0,
-    true)
+  const matchingItemLength = (JSON.parse(resList.payload) as CovidCaseDTO[]).filter(item => item.userId === uuid).length;
+  expect(matchingItemLength).toEqual(1);
 })
 
 async function loadAllCovidCases(app: any) {
